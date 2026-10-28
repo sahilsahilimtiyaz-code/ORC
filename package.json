@@ -1,0 +1,87 @@
+{
+  "name": "chad-rankings-rebuild",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Official Chad Rankings - Maximum Security Hardened",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "scripts": {
+    "dev": "next dev -p 4321",
+    "build": "next build",
+    "start": "next start -p 4321",
+    "security:audit": "node scripts/security-audit.mjs",
+    "security:headers": "node scripts/security-headers.mjs",
+    "security:scan": "node scripts/security-scan.mjs",
+    "security:test": "node scripts/security-tests.mjs",
+    "security:monitor": "node scripts/security-monitor.mjs",
+    "security:setup": "node scripts/security-setup.mjs",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "lucide-react": "^0.414.0",
+    "next": "^14.2.35",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "isomorphic-dompurify": "^2.2.0",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "cors": "^2.8.5",
+    "helmet-csp": "^3.4.0",
+    "express-validator": "^7.2.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "node-uuid": "^1.4.8",
+    "lodash": "^4.17.21",
+    "crypto-js": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/lodash": "^4.14.202",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/cors": "^2.8.17",
+    "@types/express-rate-limit": "^6.0.3",
+    "@types/crypto-js": "^4.2.2",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.7",
+    "typescript": "^5",
+    "eslint": "^8.57.0",
+    "eslint-plugin-security": "^3.0.0",
+    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-next": "^0.0.0"
+  },
+  "security": {
+    "headers": {
+      "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self';",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "DENY",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "no-referrer",
+      "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=()",
+      "X-DNS-Prefetch-Control": "off"
+    },
+    "csp": {
+      "defaultSrc": ["'self'"],
+      "scriptSrc": ["'self'", "'unsafe-inline'"],
+      "styleSrc": ["'self'", "'unsafe-inline'"],
+      "imgSrc": ["'self'", "data:", "blob:", "https:"],
+      "fontSrc": ["'self'", "data:"],
+      "connectSrc": ["'self'"],
+      "objectSrc": ["'none'"],
+      "frameAncestors": ["'none'"],
+      "formAction": ["'self'"]
+    },
+    "rateLimit": {
+      "windowMs": 60000,
+      "max": 30,
+      "standardHeaders": true,
+      "legacyHeaders": false
+    }
+  }
+}
